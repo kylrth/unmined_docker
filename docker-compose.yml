@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  unmined-cli:
+    image: unmined-cli:latest
+    user: 1000:1000
+    profiles:  # don't start this container unless explicitly asked
+      - deactivated
+    networks:  # deactivate networking
+      nonet: {}
+    cap_drop:  # remove all capabilities
+      - ALL
+    volumes:
+      - "./data/world/:/data/world/:ro"
+      - "./data/output/:/data/output/"
+      - "./config/custom.blockstyles.txt:/unmined-cli/config/custom.blockstyles.txt:ro"
+
+networks:
+  nonet:
+    external: true
+    name: none
