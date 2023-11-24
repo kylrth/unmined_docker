@@ -7,7 +7,7 @@ ARG TARGETARCH
 COPY arch.txt /home/curl_user
 
 RUN UNMINEDARCH=$(grep $TARGETARCH arch.txt | cut -d' ' -f1) && \
-    curl -s -S "https://unmined.net/download/unmined-cli-linux-$UNMINEDARCH-sc/" | \
+    curl -s -S "https://unmined.net/download/unmined-cli-linux-$UNMINEDARCH-dev/" | \
 	tar -xz
 RUN mv unmined-cli* unmined-cli
 
